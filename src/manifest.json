@@ -1,0 +1,16 @@
+{
+  "name": "Time",
+  "version": "0.0.2",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "icons": {
+    "128": "images/icon_128.png"
+  },
+  "manifest_version": 2
+}

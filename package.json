@@ -1,0 +1,23 @@
+{
+  "name": "Time",
+  "description": "A simple clock for Google Chrome",
+  "version": "0.0.2",
+  "author": "Steve Lacy me@slacy.me (http://slacy.me)",
+  "homepage": "http://github.com/stevelacy/time",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/stevelacy/time.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "devDependencies": {
+    "gulp-bump": "~0.1.3",
+    "gulp-stylus": "0.0.11",
+    "gulp": "~3.5.0",
+    "gulp-jade": "~0.4.0",
+    "gulp-coffee": "~1.3.0"
+  }
+}
