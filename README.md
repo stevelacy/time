@@ -4,6 +4,8 @@ Simple clock for Google Chrome
 
 
 
+<img src="https://raw.github.com/stevelacy/time/master/screenshot.png">
+
 
 ### Build instructions
 
@@ -24,7 +26,7 @@ Load the unpacked extension as in these directions:
 
 
 
-
+---
 
 
 
