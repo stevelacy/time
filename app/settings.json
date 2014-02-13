@@ -1,6 +1,7 @@
 {
   "clock": {
-    "format": 12
+    "format": 12,
+    "size": 20
   },
   "background": {
     "color": "#555",
