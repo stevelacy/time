@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var clock, file, getSettings, ls, repaint, setBackgroundColor, setBackgroundImage;
+    var clock, file, getSettings, ls, repaint, setBackgroundColor, setBackgroundImage, setClockSize;
     getSettings = function(cb) {
       return $.getJSON("settings.json", function(data) {
         return cb(data);
@@ -15,12 +15,17 @@
     }
     if (localStorage.settings) {
       ls = JSON.parse(localStorage.settings);
-      console.log(ls);
     }
-    repaint = $(".clock");
-    $(window).resize(function() {
-      return repaint.css("z-index", 1);
-    });
+    repaint = function() {
+      var element;
+      element = $(".clock");
+      return $(window).resize(function() {
+        return element.css("z-index", 1);
+      });
+    };
+    repaint();
+    $("#font").val(ls.clock.size);
+    $("#background-color").val(ls.background.color);
     clock = function() {
       var date, hour, minute;
       date = new Date;
@@ -50,6 +55,11 @@
         "background": color
       });
     };
+    setClockSize = function(size) {
+      return $(".clock").css({
+        "font-size": size + "vw"
+      });
+    };
     $(".clock").text(clock());
     setInterval(function() {
       return $(".clock").text(clock());
@@ -60,6 +70,7 @@
     if (ls.background.image === "") {
       setBackgroundColor(ls.background.color);
     }
+    setClockSize(ls.clock.size);
     $("#button-settings").click(function() {
       return $("#settings").stop().fadeToggle();
     });
@@ -81,11 +92,17 @@
         return reader.readAsDataURL(input.files[0]);
       }
     });
-    return $("#color").change(function(e) {
+    $("#background-color").change(function(e) {
       setBackgroundColor(e.target.value);
       ls.background.image = "";
       ls.background.color = e.target.value;
       return localStorage.settings = JSON.stringify(ls);
+    });
+    return $("#font").change(function(e) {
+      setClockSize(e.target.value);
+      ls.clock.size = e.target.value;
+      localStorage.settings = JSON.stringify(ls);
+      return repaint();
     });
   });
 

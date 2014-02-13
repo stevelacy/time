@@ -14,13 +14,18 @@ $ ->
 
   if localStorage.settings
     ls = JSON.parse localStorage.settings
-    console.log ls
 
 
+  repaint = ->
+    element = $ ".clock"
+    $(window).resize ->
+      element.css "z-index", 1
 
-  repaint = $ ".clock"
-  $(window).resize ->
-    repaint.css "z-index", 1
+  repaint()
+
+  # set values
+  $("#font").val ls.clock.size
+  $("#background-color").val ls.background.color
 
 
   # Clock
@@ -36,6 +41,8 @@ $ ->
       minute = "0#{minute}"
     return "#{hour}:#{minute}"
 
+  # Setter functions
+
   setBackgroundImage = (image) ->
     $("#background").css
       "background": "url("+image+")"
@@ -47,6 +54,11 @@ $ ->
     $("#background").css
       "background": color
 
+  setClockSize = (size) ->
+    $(".clock").css
+      "font-size": size + "vw"
+
+
   # Set the time
   $(".clock").text clock()
 
@@ -57,13 +69,17 @@ $ ->
 
   setBackgroundImage ls.background.image unless ls.background.image == ""
   setBackgroundColor ls.background.color unless ls.background.image != ""
+  setClockSize ls.clock.size
 
+  # Click functions
 
   $("#button-settings").click ->
     $("#settings").stop().fadeToggle()
 
   $("#close").click ->
     $(this).parent().fadeOut()
+
+  # Change functions
 
   $("#file").change (e) ->
     input = e.currentTarget
@@ -76,9 +92,15 @@ $ ->
         localStorage.settings = JSON.stringify ls
       reader.readAsDataURL input.files[0]
 
-  $("#color").change (e) ->
+  $("#background-color").change (e) ->
     setBackgroundColor e.target.value
     ls.background.image = ""
     ls.background.color = e.target.value
     localStorage.settings = JSON.stringify ls
+
+  $("#font").change (e) ->
+    setClockSize e.target.value
+    ls.clock.size = e.target.value
+    localStorage.settings = JSON.stringify ls
+    repaint()
       
