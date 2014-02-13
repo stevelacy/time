@@ -84,6 +84,11 @@ $ ->
   $("#close").click ->
     $(this).parent().fadeOut()
 
+  # Keyup functions
+  $(document).keyup (e) ->
+    if e.keyCode == 27
+      $("#settings").fadeOut()
+
   # Change functions
 
   $("#file").change (e) ->

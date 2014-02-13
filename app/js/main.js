@@ -84,6 +84,11 @@
     $("#close").click(function() {
       return $(this).parent().fadeOut();
     });
+    $(document).keyup(function(e) {
+      if (e.keyCode === 27) {
+        return $("#settings").fadeOut();
+      }
+    });
     $("#file").change(function(e) {
       var input, reader,
         _this = this;
