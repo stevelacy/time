@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var clock, file, getSettings, ls, repaint, setBackgroundColor, setBackgroundImage, setClockSize;
+    var clock, file, getSettings, ls, repaint, setBackgroundColor, setBackgroundImage, setClockColor, setClockSize;
     getSettings = function(cb) {
       return $.getJSON("settings.json", function(data) {
         return cb(data);
@@ -26,6 +26,7 @@
     repaint();
     $("#font").val(ls.clock.size);
     $("#background-color").val(ls.background.color);
+    $("#clock-color").val(ls.clock.color);
     clock = function() {
       var date, hour, minute;
       date = new Date;
@@ -60,6 +61,11 @@
         "font-size": size + "vw"
       });
     };
+    setClockColor = function(color) {
+      return $(".clock").css({
+        "color": color
+      });
+    };
     $(".clock").text(clock());
     setInterval(function() {
       return $(".clock").text(clock());
@@ -71,6 +77,7 @@
       setBackgroundColor(ls.background.color);
     }
     setClockSize(ls.clock.size);
+    setClockColor(ls.clock.color);
     $("#button-settings").click(function() {
       return $("#settings").stop().fadeToggle();
     });
@@ -98,11 +105,16 @@
       ls.background.color = e.target.value;
       return localStorage.settings = JSON.stringify(ls);
     });
-    return $("#font").change(function(e) {
+    $("#font").change(function(e) {
       setClockSize(e.target.value);
       ls.clock.size = e.target.value;
       localStorage.settings = JSON.stringify(ls);
       return repaint();
+    });
+    return $("#clock-color").change(function(e) {
+      setClockColor(e.target.value);
+      ls.clock.color = e.target.value;
+      return localStorage.settings = JSON.stringify(ls);
     });
   });
 

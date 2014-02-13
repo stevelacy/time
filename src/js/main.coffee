@@ -26,6 +26,7 @@ $ ->
   # set values
   $("#font").val ls.clock.size
   $("#background-color").val ls.background.color
+  $("#clock-color").val ls.clock.color
 
 
   # Clock
@@ -58,6 +59,9 @@ $ ->
     $(".clock").css
       "font-size": size + "vw"
 
+  setClockColor = (color) ->
+    $(".clock").css
+      "color": color
 
   # Set the time
   $(".clock").text clock()
@@ -70,6 +74,7 @@ $ ->
   setBackgroundImage ls.background.image unless ls.background.image == ""
   setBackgroundColor ls.background.color unless ls.background.image != ""
   setClockSize ls.clock.size
+  setClockColor ls.clock.color
 
   # Click functions
 
@@ -103,4 +108,9 @@ $ ->
     ls.clock.size = e.target.value
     localStorage.settings = JSON.stringify ls
     repaint()
+
+  $("#clock-color").change (e) ->
+    setClockColor e.target.value
+    ls.clock.color = e.target.value
+    localStorage.settings = JSON.stringify ls
       
