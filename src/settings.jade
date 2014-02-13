@@ -4,8 +4,11 @@
 
     h4 Change background
     .spacer-25
+    | Image
     form(method="post" action="" enctype="multipart/form-data")
       input(type="file" id="file")
-      input.hidden(type="submit" id="submit" value="Save")
+    | Or Color
+    form(method="post" action="" enctype="multipart/form-data")
+      input(type="color" id="color" value="#171717")
   .box
     h4 clock

@@ -36,12 +36,16 @@ $ ->
       minute = "0#{minute}"
     return "#{hour}:#{minute}"
 
-  setBackground = (image) ->
+  setBackgroundImage = (image) ->
     $("#background").css
       "background": "url("+image+")"
       "background-size": "cover"
       "background-attachment": "fixed"
-      "background-position": "center top"    
+      "background-position": "center top"
+
+  setBackgroundColor = (color) ->
+    $("#background").css
+      "background": color
 
   # Set the time
   $(".clock").text clock()
@@ -51,7 +55,8 @@ $ ->
     $(".clock").text clock()
   , 5000
 
-  setBackground ls.background
+  setBackgroundImage ls.background.image unless ls.background.image == ""
+  setBackgroundColor ls.background.color unless ls.background.image != ""
 
 
   $("#button-settings").click ->
@@ -65,10 +70,15 @@ $ ->
     e.preventDefault()
     if input.files and input.files[0]
       reader = new FileReader()
-      console.log input.files[0]
       reader.onload = (e) =>
-        setBackground e.target.result
-        ls.background = e.target.result
+        setBackgroundImage e.target.result
+        ls.background.image = e.target.result
         localStorage.settings = JSON.stringify ls
       reader.readAsDataURL input.files[0]
+
+  $("#color").change (e) ->
+    setBackgroundColor e.target.value
+    ls.background.image = ""
+    ls.background.color = e.target.value
+    localStorage.settings = JSON.stringify ls
       
