@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var clock, file, getSettings, ls, repaint, setBackground;
+    var clock, file, getSettings, ls, repaint, setBackgroundColor, setBackgroundImage;
     getSettings = function(cb) {
       return $.getJSON("settings.json", function(data) {
         return cb(data);
@@ -37,7 +37,7 @@
       }
       return "" + hour + ":" + minute;
     };
-    setBackground = function(image) {
+    setBackgroundImage = function(image) {
       return $("#background").css({
         "background": "url(" + image + ")",
         "background-size": "cover",
@@ -45,32 +45,47 @@
         "background-position": "center top"
       });
     };
+    setBackgroundColor = function(color) {
+      return $("#background").css({
+        "background": color
+      });
+    };
     $(".clock").text(clock());
     setInterval(function() {
       return $(".clock").text(clock());
     }, 5000);
-    setBackground(ls.background);
+    if (ls.background.image !== "") {
+      setBackgroundImage(ls.background.image);
+    }
+    if (ls.background.image === "") {
+      setBackgroundColor(ls.background.color);
+    }
     $("#button-settings").click(function() {
       return $("#settings").stop().fadeToggle();
     });
     $("#close").click(function() {
       return $(this).parent().fadeOut();
     });
-    return $("#file").change(function(e) {
+    $("#file").change(function(e) {
       var input, reader,
         _this = this;
       input = e.currentTarget;
       e.preventDefault();
       if (input.files && input.files[0]) {
         reader = new FileReader();
-        console.log(input.files[0]);
         reader.onload = function(e) {
-          setBackground(e.target.result);
-          ls.background = e.target.result;
+          setBackgroundImage(e.target.result);
+          ls.background.image = e.target.result;
           return localStorage.settings = JSON.stringify(ls);
         };
         return reader.readAsDataURL(input.files[0]);
       }
+    });
+    return $("#color").change(function(e) {
+      setBackgroundColor(e.target.value);
+      ls.background.image = "";
+      ls.background.color = e.target.value;
+      return localStorage.settings = JSON.stringify(ls);
     });
   });
 
