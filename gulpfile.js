@@ -47,18 +47,10 @@ gulp.task('copy', function(){
 });
 
 gulp.task('watch', function(){
-  gulp.watch('./src/*.jade', function(){
-    gulp.run('jade');
-  });
-  gulp.watch('./src/js/*.coffee', function(){
-    gulp.run('coffee');
-  });
-  gulp.watch('./src/css/*.styl', function(){
-    gulp.run('stylus');
-  });
-  gulp.watch(['./src/*', '!./src/*.jade'], function(){
-    gulp.run('copy');
-  });
+  gulp.watch('./src/*.jade', ['jade']);
+  gulp.watch('./src/js/*.coffee', ['coffee']);
+  gulp.watch('./src/css/*.styl', ['stylus']);
+  gulp.watch(['./src/*', '!./src/*.jade'], ['copy']);
 });
 
 gulp.task('default', ['stylus', 'jade', 'coffee', 'copy', 'watch']);
