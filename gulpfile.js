@@ -40,7 +40,7 @@ gulp.task('copy', function(){
   .pipe(gulp.dest('./app/js/vendor'));
   gulp.src('./src/css/vendor/*.css')
   .pipe(gulp.dest('./app/css/vendor'));
-  gulp.src(['./src/images/*', '!./src/images/*.xcf'])
+  gulp.src(['./src/images/**', '!./src/images/xcf/*'])
   .pipe(gulp.dest('./app/images'));
   gulp.src(['./src/fonts/*'])
   .pipe(gulp.dest('./app/fonts'));
