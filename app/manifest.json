@@ -10,7 +10,8 @@
     "newtab": "index.html"
   },
   "icons": {
-    "128": "images/icon_128.png"
+    "128": "128.png",
+    "16": "16.png"
   },
   "manifest_version": 2
 }
