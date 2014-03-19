@@ -1,7 +1,5 @@
 $ ->
 
-
-
   getSettings = (cb) ->
     $.getJSON "settings.json", (data) ->
       cb data
@@ -46,7 +44,7 @@ $ ->
 
   setBackgroundImage = (image) ->
     $("#background").css
-      "background": "url("+image+")"
+      "background": "url(#{image})"
       "background-size": "cover"
       "background-attachment": "fixed"
       "background-position": "center top"
