@@ -1,7 +1,7 @@
 {
   "name": "time",
-  "short_name":"time",
-  "version": "0.0.3",
+  "short_name": "time",
+  "version": "0.0.4",
   "description": "A Clean and simple clock",
   "author": "Steve Lacy me@slacy.me (http://slacy.me)",
   "homepage": "http://github.com/stevelacy/time",
@@ -11,7 +11,7 @@
   },
   "license": {
     "MIT": "https://github.com/stevelacy/time"
-    },
+  },
   "app": {
     "launch": {
       "local_path": "index.html"
@@ -21,8 +21,8 @@
     "newtab": "index.html"
   },
   "icons": {
-    "128": "128.png",
-    "16": "16.png"
+    "16": "16.png",
+    "128": "128.png"
   },
   "manifest_version": 2
 }
