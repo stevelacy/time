@@ -1,6 +1,10 @@
 @font-face {
-  font-family: 'Raleway';
+  font-family: 'time';
   font-style: normal;
   font-weight: 200;
-  src: local('Raleway ExtraLight'), local('Raleway-ExtraLight'), url("../fonts/railway.woff") format('woff');
+  src: local('Helvetica Neue'), local('Helvetica-Neue'), url("../fonts/helvetica-neue.woff") format('woff');
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

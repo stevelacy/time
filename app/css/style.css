@@ -1,8 +1,12 @@
 @font-face {
-  font-family: 'Raleway';
+  font-family: 'time';
   font-style: normal;
   font-weight: 200;
-  src: local('Raleway ExtraLight'), local('Raleway-ExtraLight'), url("../fonts/railway.woff") format('woff');
+  src: local('Helvetica Neue'), local('Helvetica-Neue'), url("../fonts/helvetica-neue.woff") format('woff');
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 * {
   margin: 0;
@@ -18,8 +22,7 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 200;
+  font-family: 'time', sans-serif;
   font-size: 18px;
   overflow-x: hidden;
   color: #262626;
