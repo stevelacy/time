@@ -1,7 +1,8 @@
 #Time
 
-Simple clock for Google Chrome
+####Simple clock for Google Chrome
 
+Available from [Google Store](https://chrome.google.com/webstore/detail/time/jekcmnoeelommnenakpnphihklkkhjgn)
 
 
 <img src="https://raw.github.com/stevelacy/time/master/screenshot.png">
