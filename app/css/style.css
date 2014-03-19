@@ -126,11 +126,17 @@ hr {
 .box {
   width: 50%;
   display: inline-block;
+  float: left;
 }
 @media all and (max-width: 1000px) {
   .box {
     width: 100%;
     margin-top: 25px;
+  }
+  .box:last-child {
+    border-top: 1px solid #cdcdcd;
+    margin-top: 20px;
+    padding-top: 20px;
   }
 }
 ::selection {
