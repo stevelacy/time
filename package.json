@@ -1,7 +1,7 @@
 {
   "name": "Time",
   "description": "A simple clock for Google Chrome",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Steve Lacy me@slacy.me (http://slacy.me)",
   "homepage": "http://github.com/stevelacy/time",
   "repository": {
