@@ -41,7 +41,7 @@
       if (minute < 10) {
         minute = "0" + minute;
       }
-      return "" + hour + ":" + minute;
+      return hour + ":" + minute;
     };
     setBackgroundImage = function(image) {
       return $("#background").css({
@@ -90,17 +90,18 @@
       }
     });
     $("#file").change(function(e) {
-      var input, reader,
-        _this = this;
+      var input, reader;
       input = e.currentTarget;
       e.preventDefault();
       if (input.files && input.files[0]) {
         reader = new FileReader();
-        reader.onload = function(e) {
-          setBackgroundImage(e.target.result);
-          ls.background.image = e.target.result;
-          return localStorage.settings = JSON.stringify(ls);
-        };
+        reader.onload = (function(_this) {
+          return function(e) {
+            setBackgroundImage(e.target.result);
+            ls.background.image = e.target.result;
+            return localStorage.settings = JSON.stringify(ls);
+          };
+        })(this);
         return reader.readAsDataURL(input.files[0]);
       }
     });
