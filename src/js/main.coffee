@@ -116,4 +116,4 @@ $ ->
     setClockColor e.target.value
     ls.clock.color = e.target.value
     localStorage.settings = JSON.stringify ls
-      
+
